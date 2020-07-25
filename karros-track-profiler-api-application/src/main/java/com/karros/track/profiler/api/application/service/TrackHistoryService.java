@@ -17,7 +17,7 @@ public class TrackHistoryService {
 	@Autowired
 	private TrackHistoryRepository trackHistoryRepository;
 	
-	public TrackHistory saveTrackHistory(Integer userId, LocalDateTime uploadTime, MultipartFile file) throws Exception {
+	public TrackHistory saveTrackHistory(String userName, LocalDateTime uploadTime, MultipartFile file) throws Exception {
 		// Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         
@@ -27,7 +27,7 @@ public class TrackHistoryService {
                 throw new Exception("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            TrackHistory trackHistory = new TrackHistory(userId, uploadTime, file.getBytes());
+            TrackHistory trackHistory = new TrackHistory(fileName, userName, uploadTime, file.getBytes());
 
             return trackHistoryRepository.save(trackHistory);
         } catch (IOException ex) {

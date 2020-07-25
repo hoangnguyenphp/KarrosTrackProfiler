@@ -14,13 +14,15 @@ public class TrackHistory {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer trackHistoryId;
-	Integer userId;
+	String fileName;
+	String userName;
 	LocalDateTime uploadTime;
 	@Lob
 	byte[] gpxFile;
 	
-	public TrackHistory(Integer userId, LocalDateTime uploadTime, byte[] gpxFile) {
-		this.userId = userId;
+	public TrackHistory(String fileName, String userName, LocalDateTime uploadTime, byte[] gpxFile) {
+		this.fileName = fileName;
+		this.userName = userName;
 		this.uploadTime = uploadTime;
 		this.gpxFile = gpxFile;
 	}
@@ -30,11 +32,17 @@ public class TrackHistory {
 	public void setTrackHistoryId(Integer trackHistoryId) {
 		this.trackHistoryId = trackHistoryId;
 	}
-	public Integer getUserId() {
-		return userId;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public LocalDateTime getUploadTime() {
 		return uploadTime;
