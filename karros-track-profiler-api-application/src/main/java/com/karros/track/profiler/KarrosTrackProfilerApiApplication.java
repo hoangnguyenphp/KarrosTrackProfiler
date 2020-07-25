@@ -1,4 +1,4 @@
-package com.karros.application;
+package com.karros.track.profiler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
