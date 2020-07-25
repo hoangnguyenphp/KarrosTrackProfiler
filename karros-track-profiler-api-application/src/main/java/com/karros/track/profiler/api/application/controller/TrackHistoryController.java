@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.karros.track.profiler.api.application.model.TrackHistory;
+import com.karros.track.profiler.api.application.dto.TrackHistoryInfo;
 import com.karros.track.profiler.api.application.service.TrackHistoryService;
 
 @RestController
@@ -30,7 +30,7 @@ public class TrackHistoryController {
     }
     
     @GetMapping("/latest-tracks")
-    public List<TrackHistory> getLatestTracks() {
+    public List<TrackHistoryInfo> getLatestTracks() {
     	return trackHistoryService.getLatestTracks();
     }
 
