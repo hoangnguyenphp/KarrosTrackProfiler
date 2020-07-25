@@ -20,6 +20,17 @@ public class TrackHistory {
 	@Lob
 	byte[] gpxFile;
 	
+	
+	public TrackHistory() {
+	}
+	
+	public TrackHistory(Integer trackHistoryId, String fileName, String userName, LocalDateTime uploadTime) {
+		this.trackHistoryId = trackHistoryId;
+		this.fileName = fileName;
+		this.userName = userName;
+		this.uploadTime = uploadTime;
+	}
+
 	public TrackHistory(String fileName, String userName, LocalDateTime uploadTime, byte[] gpxFile) {
 		this.fileName = fileName;
 		this.userName = userName;
