@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity
+
 public class TrackHistory {
-	@Id
 	Integer trackHistoryId;
 	Integer userId;
 	BigDecimal length;
