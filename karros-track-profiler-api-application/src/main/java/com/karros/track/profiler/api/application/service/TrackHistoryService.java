@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.karros.track.profiler.api.application.constant.ApplicationConstant;
 import com.karros.track.profiler.api.application.dao.TrackHistoryRepository;
-import com.karros.track.profiler.api.application.dto.TrackHistoryInfo;
+import com.karros.track.profiler.api.application.dto.TrackHistoryInfoQueryDto;
 import com.karros.track.profiler.api.application.model.TrackHistory;
 
 @Service
@@ -46,14 +46,14 @@ public class TrackHistoryService {
         }
 	}
 	
-	public List<TrackHistoryInfo> getLatestTracks() {
+	public List<TrackHistoryInfoQueryDto> getLatestTracks() {
 		Query query = em.createNativeQuery(ApplicationConstant.GET_LATEST_TRACK_HISTORIES_H2_QUERY);
 		List<Object[]> results = query.getResultList();
-		List<TrackHistoryInfo> listTrackHistoryInfo = new ArrayList<TrackHistoryInfo>();
-		TrackHistoryInfo trackHistoryInfo;
+		List<TrackHistoryInfoQueryDto> listTrackHistoryInfo = new ArrayList<TrackHistoryInfoQueryDto>();
+		TrackHistoryInfoQueryDto trackHistoryInfo;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ApplicationConstant.LOCAL_DATE_TIME_FORMAT_PATTERN_1);
 		for(Object[] th : results) {
-			trackHistoryInfo = new TrackHistoryInfo(th[0] != null ? Integer.parseInt(th[0].toString()) : null,
+			trackHistoryInfo = new TrackHistoryInfoQueryDto(th[0] != null ? Integer.parseInt(th[0].toString()) : null,
 											th[1] != null ? th[1].toString() : null,
 											th[2] != null ? th[2].toString() : null,
 											th[3] != null ? LocalDateTime.parse(th[3].toString(), formatter) : null);

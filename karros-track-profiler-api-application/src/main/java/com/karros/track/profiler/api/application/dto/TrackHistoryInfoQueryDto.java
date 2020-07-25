@@ -2,12 +2,12 @@ package com.karros.track.profiler.api.application.dto;
 
 import java.time.LocalDateTime;
 
-public class TrackHistoryInfo {
+public class TrackHistoryInfoQueryDto {
 	Integer trackHistoryId;
 	String fileName;
 	String userName;
 	LocalDateTime uploadTime;
-	public TrackHistoryInfo(Integer trackHistoryId, String fileName, String userName, LocalDateTime uploadTime) {
+	public TrackHistoryInfoQueryDto(Integer trackHistoryId, String fileName, String userName, LocalDateTime uploadTime) {
 		this.trackHistoryId = trackHistoryId;
 		this.fileName = fileName;
 		this.userName = userName;
