@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -18,6 +19,8 @@ import com.karros.track.profiler.api.application.constant.ApplicationConstant;
 import com.karros.track.profiler.api.application.dao.TrackHistoryRepository;
 import com.karros.track.profiler.api.application.dto.TrackHistoryInfoQueryDto;
 import com.karros.track.profiler.api.application.model.TrackHistory;
+
+import javassist.NotFoundException;
 
 @Service
 public class TrackHistoryService {
@@ -60,5 +63,10 @@ public class TrackHistoryService {
 			listTrackHistoryInfo.add(trackHistoryInfo);
 		}
 		return listTrackHistoryInfo;
+	}
+	
+	public TrackHistory getTrackDetails(Integer trackHistoryId) throws NotFoundException {
+		TrackHistory th = trackHistoryRepository.findById(trackHistoryId).orElseThrow(() -> new NotFoundException("Track does not exist"));
+		return th;
 	}
 }
